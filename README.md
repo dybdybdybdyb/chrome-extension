@@ -17,6 +17,13 @@ As usual, there will be some setup involved before you can get started.
 npm install
 ```
 
+- [ ] Start your server by running:
+```
+npm start
+```
+
+- [ ] Visit http://localhost:3000 to view your index.html page
+
 ### Request
 Every asynchronous request is at its core an HTTP request. The browser sends a `request` object to the server with information regarding the broswer's intention with the server. There are major request types (or methods) that provide valuable information about the browsers intention:
 
