@@ -70,9 +70,4 @@ Below is a sample message:
 
 ### How do I test if my answer is correct?
 
-Run the following command in the terminal:
-```
-npm test
-```
-
-Again: Treat the tests for this unit as a guideline and not as an absolute. You may choose to implement your chatroom in a slightly different way than the tests are expecting which could cause the tests to fail, and that's fine - as long as you can get your messages data into the DOM and POST messages to the server then you're on the right track.
+Because there are so many approaches to this application, YOU will be the test suite. Interact with your application to see if it is doing what you want it to do. Don't forget to use console.log()s intelligently as a debugging tool.
