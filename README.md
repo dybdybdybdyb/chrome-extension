@@ -50,7 +50,7 @@ A few examples of what is provided in the HTTP headers:
 
 - [ ] Retrieve the list of messages from our messaging server by making a **GET** request to the following URI: <br>```https://ohwuvawrw4.execute-api.us-west-2.amazonaws.com/messages```
 
-- NOTE: Since you are retrieving data from an eternal API, you may get a 'CORS' error in the browser console preventing your request from completing. This is a common hurdle in working with APIs, and there is more than one solution for you to find and implement. As always, the MDN documentation is good place to begin, though you may need to do additional research. https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS
+- NOTE: Since you are retrieving data from an eternal API, you may get a 'CORS' error in the browser console preventing your request from completing. This is a common hurdle in working with APIs, and there is more than one solution to be found. As always, the MDN documentation is good place to begin, though you may need to do additional research. https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS
 
 - [ ] Using JavaScript, populate your messages area with the list of messages retrieved via the AJAX request.
 
