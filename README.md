@@ -1,40 +1,28 @@
-# Unit 5: Online-Chatroom
+# Unit Challenge: Online Chatroom
 
-## Summary
-In your skillbuilder, you used an asynchronous request to retrieve calendar data and then used that data to populate the DOM so that the user could view their calendar entries. Now, we're going to use even more asynchronous requests so that you can develop a deeper understanding and familiarity with asynchronous code. If you remember one thing from this unit, remember that [AJAX](https://en.wikipedia.org/wiki/Ajax_(programming)) (asynchronous JavaScript and XML) allows the browser to communicate with a foreign server without reloading the page.
+## Overview
+
+As you've learned, the web is a vast network of machines communicating (mostly) via HTTP requests. Whenever a client makes a request to a server, the server sends back an HTTP response, completing the cycle. When building web apps, there are many ways to instruct the browser to send an HTTP request, but modern applications rely on web APIs like fetch to send requests and receive responses _asynchronously_ in the background, without requiring a full page reload. 
 
 ![inline](./docs/assets/images/page_lifecycles.png)
 
-Imagine if on Slack the entire page had to refresh every time a new message was posted - that's crazy. Prior to AJAX the browser would need to refresh the page in order to change. With AJAX, we can send a request to the server and - when the server responds - we can modify the page dynamically with JavaScript.
+In this challenge, you'll build the clientside application for an online chatroom, programming a series of HTTP requests and dynamically handling the responses in order develop a deeper understanding and familiarity with asynchronous JavaScript. 
 
-## How do I get started
-As usual, there will be some setup involved before you can get started.
-
-- [ ] As usual, fork and clone this repo.
-
-- [ ] Next, use the following command to install any new npm dependencies:
-```
-npm install
-```
-
-- [ ] Start your server by running:
-```
-npm start
-```
-
-- [ ] Visit http://localhost:3000 to view your index.html page
+## Additional Context
 
 ### Request
-Every asynchronous request is at its core an HTTP request. The browser sends a `request` object to the server with information regarding the broswer's intention with the server. There are major request types (or methods) that provide valuable information about the browsers intention:
+
+Every asynchronous request is at its core an HTTP request. The browser sends a `request` object to the server with information regarding the browser's intention with the server. There are major request types (or methods) that provide valuable information about the browsers intention:
 
 - GET
 - POST
 - PUT
 - DELETE
 
-**GET** requests are primarily used for fetching data from a the server. For example, when you load Faceboook, your browser is making a GET request for all of your friends' latest post to populate the news feed. **POST** requests are used to provide data to the server. Whenever you are using Facebook messengers, and you send a message - a POST request is being made by your browser to add your message the server. **PUT** requests are used to update data on the server. **DELETE** requests inform the server that some data needs to be deleted.
+**GET** requests are primarily used for fetching data from the server. For example, when you load Instagram, your browser is making a GET request for all of your friends' latest posts to populate the news feed. **POST** requests are used to provide data to the server. Whenever you are using Messenger and you send a message - a POST request is being made by your browser to add your message the server. **PUT** requests are used to update data on the server. **DELETE** requests inform the server that some data needs to be deleted.
 
 ### HTTP Headers
+
 ![](./docs/assets/images/http_headers.png)
 
 In addition to the request **method**, the browser may provide additional information and instructions about its request in the form of **[request headers](https://en.wikipedia.org/wiki/List_of_HTTP_header_fields)**.
@@ -44,31 +32,51 @@ A few examples of what is provided in the HTTP headers:
 - **Accept:** Informs the server what file type the browser expects to receive back from the server
 - **User-Agent:** Information about the method at which the browser is communicating with the server
 
+## Getting Started
 
-## Challenges
-- [ ] Create an area in your HTML where chat messages can be displayed. You may create this area either statically (editing your index.html file directly), dynamically (by interacting with the DOM using JavaScript in main.js), or with a combination of the two.
+- [ ] Fork and clone this repository. If you need a refresher, just follow the instructions found [here](https://github.com/CodesmithLLC/dev-environment-setup/blob/main/fork-clone.md)!
 
-- [ ] Retrieve the list of messages from our messaging server by making a **GET** request to the following URI: <br>```https://ohwuvawrw4.execute-api.us-west-2.amazonaws.com/messages```
-	- NOTE: Since you are retrieving data from an external API, you may get a 'CORS' error in the browser console preventing your request from completing. This is a common hurdle in working with APIs, and there is more than one solution to be found. As always, the [MDN documentation](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) is a good place to begin, though you may need to do additional research. 
+- [ ] Run `npm install` to install any dependencies
+- [ ] Run `npm start` to start your development server
 
-- [ ] Using JavaScript, populate your messages area with the list of messages retrieved via the AJAX request.
+A dev server is a local development tool that automatically serves your files to the browser and refreshes when you make changes to your code. Once it's running in the background, you can visit http://localhost:5173 to preview and test your application.
 
+NOTE: Your dev server is also handling compilation from TypeScript to JavaScript behind the scenes! Even though you won't be explicitly running the TypeScript compiler (where you would usually be alerted to type errors), your IDE will very likely display type errors via Intellisense or the Issues pane while you're working. If you run into errors, here are a few tips:
+
+- Use type assertions when selecting DOM elements (e.g., HTMLInputElement)
+- It's a great idea to define interfaces for any data structures (e.g., the message objects included on the HTTP response)
+
+## PART 1
+
+- [ ] Create an area on the page where chat messages can be displayed. You may create this area either statically (editing index.html directly), dynamically (by interacting with the DOM using JavaScript in src/main.ts), or with a combination of the two.
+
+- [ ] Retrieve the list of messages from our messaging server by making a **GET** request to the following URI: `https://ohwuvawrw4.execute-api.us-west-2.amazonaws.com/messages`
+
+NOTE: Since you are retrieving data from an external API, you may get a 'CORS' error in the browser console preventing your request from completing. This is a common hurdle in working with APIs, and there is more than one solution to be found. As always, the [MDN documentation](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) is a good place to begin, though you may need to do additional research.
+
+- [ ] Using JavaScript, populate your messages area with the list of messages retrieved via the HTTP request.
+
+## PART 2
 
 - [ ] Create a text input and submit button where users of your chatroom can enter and submit their messages.
 
-
-- [ ] Post messages to the server by making a **POST** request to the same URI as above. Include a **body** with your AJAX request that includes information about your message. The body should contain the properties `created_by` and `message`. The server is expecting the body of the POST request to be encoded as **JSON**.  
-	- *Hint: you may need to tell the server what type of data you're sending over*
+- [ ] Post messages to the server by making a **POST** request to the same URI as above. Include a **body** with your AJAX request that includes information about your message. The body should contain the properties `created_by` and `message`. The server is expecting the body of the POST request to be encoded as **JSON**. NOTE: You may need to explicitly tell the server what type of data you're sending over!
 
 Below is a sample message:
 
-```javascript
+```json
 {
-  created_by: "Alex Zai",
-  message: "Sample message"
+  "created_by": "Alex Zai",
+  "message": "Sample message"
 }
 ```
 
-### How do I test if my answer is correct?
+## BONUS
 
-Because there are so many approaches to this application, YOU will be the test suite. Interact with your application to see if it is doing what you want it to do. Don't forget to use console.log()s intelligently as a debugging tool.
+These bonus objectives are opportunities to extend your learning beyond the base challenges. They can be attempted in any order, depending on what you want to focus on.
+
+- [ ] Populating _all_ the previous messages might be overkill, cluttering your UI with unnecessary information. Develop logic to selectively render only a portion of the messages at a time, ordering them in whatever way feels most intuitive.
+
+- [ ] Create a button that users can press in order to refresh the message feed without reloading the entire page.
+
+- [ ] Add some styling to your chatroom and make it your own! What's the best format to display the name of the user who sent the message? What about the datetime the message was sent?
