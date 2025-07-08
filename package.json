@@ -4,8 +4,5 @@
   },
   "dependencies": {
     "vite": "^6.3.4"
-  },
-  "devDependencies": {
-    "eslint": "^7.12.1"
   }
 }
