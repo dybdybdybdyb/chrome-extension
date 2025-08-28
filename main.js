@@ -1,22 +1,21 @@
 function extractMainContent() {
   // Identify the article content
   const content = document.querySelectorAll(
-    'article, main, .post-content, .main-content'
+    'article, main, .post-content, .main-content, data-component'
   );
   if (content.length === 0) return;
 
-  document.body.innerHTML = '';
+  // Delete anything that it is not article
+  document.body.replaceChildren(...content);
+
+  // document.body.innerHTML = '';
   content.forEach((element) => {
-    document.body.append(element);
     // CSS
     element.style.maxWidth = '800px';
     element.style.margin = '0 auto';
     element.style.background = '#111';
     element.style.fontFamily = 'Roboto';
   });
-
-  // Delete anything that it is not article
-  document.body.replaceChildren(content);
 
   // Identify the p elements and adjust their font color
   const paragraph = document.querySelectorAll('p');
