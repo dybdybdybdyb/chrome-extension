@@ -3,11 +3,9 @@
   "name": "Article Cleaner",
   "version": "1.0",
   "description": "Keep only the <article> and remove distractions",
-  "content_scripts": [
-    {
-      "matches": ["https://*/*", "http://*/*"],
-      "js": ["main.js"],
-      "run_at": "document_idle"
-    }
-  ]
+  "permissions": ["scripting", "activeTab", "tabs"],
+  "host_permissions": ["<all_urls>"],
+  "action": {
+    "default_popup": "popup.html"
+  }
 }

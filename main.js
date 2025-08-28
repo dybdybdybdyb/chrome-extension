@@ -3,19 +3,18 @@ function extractMainContent() {
     const content = document.querySelector("article") || document.querySelector("main");
     if (!content) return;
 
-    // Delete anything that it is not article
+    // Delete anything that it is not article or main
     document.body.replaceChildren(content);
 
     // Identify the p elements and adjust their font color
     const paragraph = document.querySelectorAll("p")
 
+    // CSS
     paragraph.forEach ((p) => {
         p.style.color = "#fff";
     })
 
-    // CSS
     content.style.maxWidth = "800px";
-    // content.style.justifyContent = "center";
     content.style.background = "#111";
     content.style.fontFamily = "Roboto";
 }
