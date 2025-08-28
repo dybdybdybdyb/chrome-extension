@@ -1,0 +1,13 @@
+{
+  "manifest_version": 3,
+  "name": "Article Cleaner",
+  "version": "1.0",
+  "description": "Keep only the <article> and remove distractions",
+  "content_scripts": [
+    {
+      "matches": ["https://*/*", "http://*/*"],
+      "js": ["main.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}
